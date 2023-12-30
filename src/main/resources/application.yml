@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: fortune-cookie-rest
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: not-secret
+  flyway:
+    user: postgres
+    password: not-secret
+    schemas: public
+    #clean-on-validation-error: true
+    #clean-disabled: false

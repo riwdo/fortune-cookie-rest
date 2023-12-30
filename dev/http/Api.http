@@ -1,0 +1,5 @@
+### Ping
+GET {{serverUrl}}/ping
+
+### Fortunes
+GET {{serverUrl}}/fortunes
