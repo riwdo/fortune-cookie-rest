@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test;MODE=PostgreSQL;
+    username: sa
+    password: ""
+  flyway:
+    user: sa
+    password: ""
+    schemas: public
+    #clean-on-validation-error: true
+    #clean-disabled: false
+    locations: classpath:/db/migration,classpath:/db/testdata

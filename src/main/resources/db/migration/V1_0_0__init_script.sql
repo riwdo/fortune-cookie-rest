@@ -1,3 +1,6 @@
+DROP TABLE IF EXISTS "order";
+DROP TABLE IF EXISTS fortune;
+
 create table fortune (
     id SERIAL PRIMARY KEY,
     created_at date,
@@ -5,5 +8,10 @@ create table fortune (
     author varchar(255)
 );
 
-insert into fortune (created_at, description, author)
-values ('2023-12-30 12:30:00', 'Some fortune', 'John Doe');
+create table "order" (
+    id SERIAL PRIMARY KEY,
+    created_at date,
+    status varchar(255),
+    address JSON,
+    fortune_id SERIAL references fortune (id)
+);

@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class FortuneCookieRestApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(FortuneCookieRestApplication.class, args);
-    }
-
+  public static void main(String[] args) {
+    SpringApplication.run(FortuneCookieRestApplication.class, args);
+  }
 }

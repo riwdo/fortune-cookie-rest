@@ -1,26 +1,17 @@
 package com.good.fortunecookierest.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.Data;
-
-import java.time.LocalDateTime;
+import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Data
-public class Fortune {
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Fortune extends BaseEntity {
 
-    @Id
-    private Long id;
+  @Column private String description;
 
-    @Column
-    private LocalDateTime createdAt;
-
-    @Column
-    private String description;
-
-    @Column
-    private String author;
-
+  @Column private String author;
 }

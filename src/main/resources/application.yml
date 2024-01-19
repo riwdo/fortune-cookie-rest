@@ -3,12 +3,13 @@ spring:
     name: fortune-cookie-rest
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: not-secret
+    url: jdbc:postgresql://localhost:5432/mydatabase
+    username: myuser
+    password: mypassword
   flyway:
-    user: postgres
-    password: not-secret
+    user: myuser
+    password: mypassword
     schemas: public
     #clean-on-validation-error: true
     #clean-disabled: false
+    locations: classpath:/db/migration,classpath:/db/testdata
