@@ -1,5 +1,7 @@
 package com.good.fortunecookierest.repository;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import com.good.fortunecookierest.model.Fortune;
 import com.good.fortunecookierest.model.Order;
 import org.junit.jupiter.api.Disabled;
@@ -29,17 +31,28 @@ public class OrderRepositoryTest {
 
   @Test
   public void saveOrderOk() {
-    Fortune fortune = Fortune.builder().description("test test").author("Author Doe").build();
+    Fortune fortune =
+        Fortune.builder()
+            .description(
+                "In the garden of code, patience is the soil. Bugs, fleeting as clouds, come and go. Debug with a calm mind, and let go.")
+            .author("Zen Master CodeSanity")
+            .build();
     fortuneRepository.save(fortune);
 
     Order order = Order.builder().fortune(fortune).status(Order.Status.RECEIVED).build();
     orderRepository.save(order);
+
+    var orders = orderRepository.findAll();
+    assertEquals(1, orders.size());
   }
 
   @Test
   @Commit // This should not be here!
   public void deleteAllOk() {
     orderRepository.deleteAll();
+
+    var orders = orderRepository.findAll();
+    assertEquals(0, orders.size());
   }
 
   @Configuration
