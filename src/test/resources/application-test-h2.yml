@@ -10,4 +10,4 @@ spring:
     schemas: public
     #clean-on-validation-error: true
     #clean-disabled: false
-    locations: classpath:/db/migration,classpath:/db/testdata
+    locations: classpath:/db/migration

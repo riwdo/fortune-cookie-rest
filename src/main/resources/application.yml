@@ -10,6 +10,6 @@ spring:
     user: myuser
     password: mypassword
     schemas: public
-    #clean-on-validation-error: true
-    #clean-disabled: false
+    clean-on-validation-error: true
+    clean-disabled: false
     locations: classpath:/db/migration,classpath:/db/testdata

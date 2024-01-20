@@ -8,10 +8,14 @@ create table fortune (
     author varchar(255)
 );
 
+CREATE TYPE "status" AS ENUM ('RECEIVED', 'BAKING');
+ALTER TYPE "status" ADD VALUE 'DELIVERED';
+
 create table "order" (
     id SERIAL PRIMARY KEY,
     created_at date,
     status varchar(255),
-    address JSON,
+    address jsonb,
     fortune_id SERIAL references fortune (id)
 );
+
