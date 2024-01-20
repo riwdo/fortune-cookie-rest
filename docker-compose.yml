@@ -10,6 +10,16 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+  postgres-integration-test:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: integration-test
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    ports:
+      - "8001:5432"
+    volumes:
+      - postgres_integration_test_data:/var/lib/postgresql/data
 
   kafka:
     image: wurstmeister/kafka:latest
@@ -41,3 +51,4 @@ services:
 
 volumes:
   postgres_data:
+  postgres_integration_test_data:

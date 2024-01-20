@@ -9,10 +9,12 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ActiveProfiles("test-separate-container")
 @Disabled
-public class FortuneRepositoryTestAlteringProdDatabase {
+public class FortuneRepositoryTestAlteringTestDatabase {
   @Autowired private FortuneRepository fortuneRepository;
 
   @Test
