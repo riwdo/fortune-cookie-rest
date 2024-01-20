@@ -1,4 +1,4 @@
-### Ping
+### Ping server
 GET {{serverUrl}}/ping
 
 ### Get fortunes
