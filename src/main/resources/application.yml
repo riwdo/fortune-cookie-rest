@@ -3,7 +3,7 @@ spring:
     name: fortune-cookie-rest
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/mydatabase
+    url: jdbc:postgresql://localhost:5432/prod
     username: myuser
     password: mypassword
   flyway:
