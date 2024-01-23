@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: fortune-cookie-rest
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    schemas: public
+    clean-on-validation-error: true
+    clean-disabled: false
+    locations: classpath:/db/migration
+
+api:
+  payment:
+    base-url:
