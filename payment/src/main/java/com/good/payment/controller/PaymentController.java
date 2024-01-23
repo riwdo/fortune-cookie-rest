@@ -15,31 +15,29 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class PaymentController {
 
-    @PostMapping(path = "/payment")
-    public ResponseEntity<?> payment(@RequestBody Payment payment) {
-        log.info("POST /payment");
-        log.info("Use paymentType {} for order {}", payment.getType(), payment.getOrderId());
-        return ResponseEntity.ok().build();
+  @PostMapping(path = "/payment")
+  public ResponseEntity<?> payment(@RequestBody Payment payment) {
+    log.info("POST /payment");
+    log.info("Use paymentType {} for order {}", payment.getType(), payment.getOrderId());
+    return ResponseEntity.ok().build();
+  }
+
+  @Data
+  @Builder
+  @AllArgsConstructor
+  @NoArgsConstructor
+  public static class Payment {
+
+    private String orderId;
+    private Type type;
+
+    public enum Type {
+      @JsonProperty("swish")
+      SWISH,
+      @JsonProperty("klarna")
+      KLARNA,
+      @JsonProperty("card")
+      CARD
     }
-
-    @Data
-    @Builder
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class Payment {
-
-        private String orderId;
-        private Type type;
-
-        public enum Type {
-            @JsonProperty("swish")
-            SWISH,
-            @JsonProperty("card")
-            CARD
-        }
-
-    }
-
-
-
+  }
 }

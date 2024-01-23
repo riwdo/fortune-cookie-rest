@@ -39,7 +39,8 @@ public class PositiveOrderFlowTest extends AbstractRegressionTest {
             "/orders",
             """
              {
-              "fortuneId": %s
+              "fortuneId": %s,
+              "paymentType": "klarna"
              }
             """
                 .formatted(fortuneId));

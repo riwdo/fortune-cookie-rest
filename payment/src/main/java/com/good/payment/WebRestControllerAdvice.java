@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class WebRestControllerAdvice {
 
   @ExceptionHandler(HttpMessageNotReadableException.class)
-  public ResponseEntity<ErrorResponse> handleMessageNotReadable(HttpMessageNotReadableException ex) {
+  public ResponseEntity<ErrorResponse> handleMessageNotReadable(
+      HttpMessageNotReadableException ex) {
     log.info("Bad Request Exception:", ex);
     ErrorResponse errorResponse =
         new ErrorResponse(HttpStatus.BAD_REQUEST.value(), ex.getMessage());

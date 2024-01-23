@@ -14,6 +14,7 @@ public abstract class AbstractRegressionTest {
 
   public static PostgreSQLContainer<?> postgreSQLContainer;
   public static GenericContainer<?> fortuneCookieRestApplication;
+  public static GenericContainer<?> paymentApplication;
 
   public static Network network;
 
@@ -22,7 +23,9 @@ public abstract class AbstractRegressionTest {
 
     postgreSQLContainer = createPostgresContainer();
     fortuneCookieRestApplication = createFortuneCookieRestApplication();
+    paymentApplication = createPaymentApplication();
     postgreSQLContainer.start();
+    paymentApplication.start();
 
     fortuneCookieRestApplication.withEnv(
         Map.of(
@@ -35,7 +38,9 @@ public abstract class AbstractRegressionTest {
             "SPRING_FLYWAY_USER",
             postgreSQLContainer.getUsername(),
             "SPRING_FLYWAY_PASSWORD",
-            postgreSQLContainer.getPassword()));
+            postgreSQLContainer.getPassword(),
+            "API_PAYMENT_BASE-URL",
+            "http://payment:8081"));
     fortuneCookieRestApplication.start();
   }
 
@@ -51,6 +56,19 @@ public abstract class AbstractRegressionTest {
                     outputFrame.getUtf8String(),
                     "APP:",
                     LoggerFactory.getLogger("CONTAINER_LOGGER.FORTUNECOOKIEREST")));
+  }
+
+  private static GenericContainer<?> createPaymentApplication() {
+    return new GenericContainer<>("payment:latest")
+        .withExposedPorts(8081)
+        .withNetwork(network)
+        .withNetworkAliases("payment")
+        .withLogConsumer(
+            outputFrame ->
+                logContainerMsg(
+                    outputFrame.getUtf8String(),
+                    "APP:",
+                    LoggerFactory.getLogger("CONTAINER_LOGGER.PAYMENT")));
   }
 
   private static PostgreSQLContainer<?> createPostgresContainer() {
